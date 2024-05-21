@@ -61,11 +61,17 @@ public class LinkedIntList {
     * @param value integer value to add
     */
    public void addEnd(int value) {
-      ListNode temp = front;
-      while (temp != null) {
-         temp = temp.next;
+      if (front == null) {
+         front = new ListNode(value);
       }
-      temp.next = new ListNode(value);
+
+      else{
+         ListNode temp = front;
+         while (temp != null) {
+            temp = temp.next;
+         }
+         temp.next = new ListNode(value);
+      }
    }
 
    /**
@@ -77,11 +83,12 @@ public class LinkedIntList {
     */
    public int removeFront() {
    // TODO
+      if (front == null) {
+         throw new IllegalArgumentException("No node to remove");
+      }
+
       ListNode temp = front;
       front = front.next;
-      // while (temp != null) {
-      //    temp
-      // }
       return temp.data;
       
    }
@@ -138,27 +145,25 @@ public class LinkedIntList {
     */
    public boolean contains(int value) {
    // TODO
-      boolean isEqual = false;
-
       ListNode temp = front;
       while (temp != null) {
          if (temp.data == value) {
-            isEqual = true;
+            return true;
          }
          temp = temp.next;
       }
-      return isEqual;
+      return false;
       
    }
 
    /**
-    *
+    * Returns the size of the linked list
     * @return the number of list nodes in the singly linked list
     */
    public int size() {
    // TODO
       ListNode temp = front;
-      int count = 1;
+      int count = 0;
 
       while (temp != null) {
          count ++;
@@ -200,6 +205,5 @@ public class LinkedIntList {
       // curr is on null
 
       return result + "]";
-      
    }
 }
