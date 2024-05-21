@@ -61,7 +61,11 @@ public class LinkedIntList {
     * @param value integer value to add
     */
    public void addEnd(int value) {
-   
+      ListNode temp = front;
+      while (temp != null) {
+         temp = temp.next;
+      }
+      temp.next = new ListNode(value);
    }
 
    /**
@@ -73,7 +77,12 @@ public class LinkedIntList {
     */
    public int removeFront() {
    // TODO
-      return -1;
+      ListNode temp = front;
+      front = front.next;
+      // while (temp != null) {
+      //    temp
+      // }
+      return temp.data;
       
    }
 
@@ -129,7 +138,16 @@ public class LinkedIntList {
     */
    public boolean contains(int value) {
    // TODO
-      return false;
+      boolean isEqual = false;
+
+      ListNode temp = front;
+      while (temp != null) {
+         if (temp.data == value) {
+            isEqual = true;
+         }
+         temp = temp.next;
+      }
+      return isEqual;
       
    }
 
@@ -139,14 +157,15 @@ public class LinkedIntList {
     */
    public int size() {
    // TODO
+      ListNode temp = front;
       int count = 1;
 
-      while (front.next != null) {
-
+      while (temp != null) {
          count ++;
+         temp = temp.next;
       }
+
       return count;
-      
    }
 
    /**
