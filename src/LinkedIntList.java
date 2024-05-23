@@ -157,6 +157,7 @@ public class LinkedIntList {
    }
 
    /**
+    * Time Complexity of the size method is O(n).
     * Returns the size of the linked list
     * @return the number of list nodes in the singly linked list
     */
